@@ -45,3 +45,15 @@ class Character(models.Model):
     path = models.CharField(max_length=9, choices=PATH_CHOICES)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="characters")
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE, related_name="characters")
+    level = models.IntegerField(default=1)
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["owner", "name"],
+                name="unique_character_name_per_owner",
+            ),
+            models.CheckConstraint(
+                condition=models.Q(level__gte=1, level__lte=60),
+                name="character_level_between_1_and_60"
+            )
+        ]
