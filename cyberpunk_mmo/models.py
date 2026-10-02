@@ -35,7 +35,7 @@ class Skill(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    specializations = models.ManyToManyField(Specialization, related_name="skills")
+    specialization = models.ManyToManyField(Specialization, related_name="skills")
 
     def __str__(self) -> str:
         return self.name
@@ -53,9 +53,11 @@ class Character(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     path = models.CharField(max_length=9, choices=PATH_CHOICES)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="characters")
-    specialization = models.ForeignKey(Specialization, on_delete=models.CASCADE, related_name="characters")
+    specialization = models.ForeignKey(Specialization, on_delete=models.CASCADE, related_name="characters",
+                                       default="Solo")
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE, related_name="characters")
     level = models.IntegerField(default=1)
+
     class Meta:
         constraints = [
             models.UniqueConstraint(
