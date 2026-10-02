@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.utils.text import slugify
 from django.db import models
 
 
@@ -17,6 +18,16 @@ class Faction(models.Model):
     description = models.TextField()
     side = models.CharField(max_length=1, choices=SIDE_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    @property
+    def image_path(self) -> str:
+        return (
+            f"images/factions/"
+            f"{slugify(self.name)}.png"
+        )
 
     def __str__(self) -> str:
         return f"{self.name} ({self.side})"
@@ -53,8 +64,7 @@ class Character(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     path = models.CharField(max_length=9, choices=PATH_CHOICES)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="characters")
-    specialization = models.ForeignKey(Specialization, on_delete=models.CASCADE, related_name="characters",
-                                       default="Solo")
+    specialization = models.ForeignKey(Specialization, on_delete=models.CASCADE, related_name="characters")
     faction = models.ForeignKey(Faction, on_delete=models.CASCADE, related_name="characters")
     level = models.IntegerField(default=1)
 

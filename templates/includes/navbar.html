@@ -1,0 +1,27 @@
+<nav>
+  <ul>
+    <li>
+      <a href="{% url "cyberpunk_mmo:faction-list" %}">FACTIONS</a>
+    </li>
+    <li>
+      <a href="#">SPECIALIZATIONS</a>
+    </li>
+    <li>
+      <a href="#">CLASSES</a>
+    </li>
+    {% if user.is_authenticated %}
+      <li>
+        <a href="#">MY CREW</a>
+      </li>
+    {% endif %}
+  </ul>
+  {% if user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit">LOGOUT</button>
+    </form>
+  {% else %}
+    <a class="btn" href="#">LOGIN</a>
+    <a class="btn" href="#">REGISTRATION</a>
+  {% endif %}
+</nav>
