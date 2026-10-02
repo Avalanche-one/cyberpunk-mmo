@@ -44,19 +44,20 @@ class SpecializationAdmin(admin.ModelAdmin):
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
     list_display = ("name", "description", "display_specializations")
+    list_filter = ("specialization",)
 
     def get_queryset(self, request: HttpRequest):
-        return super().get_queryset(request).prefetch_related("specializations")
+        return super().get_queryset(request).prefetch_related("specialization")
 
     @admin.display(description="Specializations")
     def display_specializations(self, obj) -> str:
-        return ", ".join(specialization.name for specialization in obj.specializations.all())
+        return ", ".join(specialization.name for specialization in obj.specialization.all())
 
 
 @admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
     list_display = ("name", "specialization", "faction", "path", "level")
-    fields = ("name", "faction", "path", "specialization")
+    fields = ("name", "faction", "path", "specialization", "owner")
     list_filter = ("specialization", "faction", "path", "level")
     search_fields = ("name",)
     list_select_related = ("specialization", "faction")
