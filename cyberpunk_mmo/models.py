@@ -15,6 +15,9 @@ class Post(models.Model):
     class Meta:
         ordering = ["-created_at"]
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Faction(models.Model):
     SIDE_CHOICES = [
@@ -39,7 +42,7 @@ class Faction(models.Model):
         )
 
     def __str__(self) -> str:
-        return f"{self.name} ({self.side})"
+        return f"{self.name} ({self.get_side_display()})"
 
 
 class Specialization(models.Model):

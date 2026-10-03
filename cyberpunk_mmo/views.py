@@ -2,11 +2,11 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from cyberpunk_mmo.forms import RegisterForm
+from cyberpunk_mmo.forms import RegisterForm, CharacterCreateForm
 from cyberpunk_mmo.models import (Faction,
                                   Specialization,
                                   Post,
@@ -40,10 +40,44 @@ class CharacterListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        return super().get_queryset().filter(owner=self.request.user)
+        return (super()
+                .get_queryset()
+                .filter(owner=self.request.user))
+
+
+
+class CharacterDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Character
+
+    def get_queryset(self):
+        return (super()
+                .get_queryset()
+                .filter(owner=self.request.user)
+                .select_related("specialization", "faction"))
+
+
+class CharacterCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Character
+    form_class = CharacterCreateForm
+    template_name = "cyberpunk_mmo/character_form.html"
+    success_url = reverse_lazy("cyberpunk_mmo:character-list")
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
 class UserCreateView(generic.CreateView):
     form_class = RegisterForm
     template_name = "registration/register.html"
     success_url = reverse_lazy("login")
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("cyberpunk_mmo:index")
+        return super().dispatch(request, *args, **kwargs)

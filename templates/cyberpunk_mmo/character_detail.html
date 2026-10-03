@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <img src="{% static character.specialization.image_path %}" alt="{{ character.specialization.name }}">
+  <h1>{{ character.name }}</h1>
+  <p>{{ character.level }}</p>
+  <p>{{ character.get_path_display }}</p>
+  <p>{{ character.faction.name }}</p>
+  <p>{{ character.specialization.name }}</p>
+  <a href="{% url 'cyberpunk_mmo:character-list' %}">
+    Back to my crew
+  </a>
+{% endblock %}
