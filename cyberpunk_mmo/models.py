@@ -98,6 +98,6 @@ class Character(models.Model):
 
     def __str__(self):
         return (f"{self.name}, "
-                f"level - {self.level},  "
+                f"level - {self.level}, "
                 f"specialization - {self.specialization}, "
                 f"faction - {self.faction}")
