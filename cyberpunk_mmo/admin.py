@@ -7,8 +7,16 @@ from cyberpunk_mmo.models import (
     Faction,
     Specialization,
     Skill,
-    Character
+    Character,
+    Post
 )
+
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ("name", "created_at")
+    search_fields = ("name",)
+    ordering = ("-created_at",)
 
 
 @admin.register(User)
