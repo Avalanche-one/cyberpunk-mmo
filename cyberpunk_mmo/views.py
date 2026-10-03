@@ -4,7 +4,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.views import generic
 
-from cyberpunk_mmo.models import Faction
+from cyberpunk_mmo.models import Faction, Specialization, Post
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -18,3 +18,13 @@ def index(request: HttpRequest) -> HttpResponse:
 class FactionListView(generic.ListView):
     model = Faction
     paginate_by = 10
+
+
+class SpecializationListView(generic.ListView):
+    model = Specialization
+
+
+class PostListView(generic.ListView):
+    model = Post
+    paginate_by = 5
+    ordering = "-created_at"

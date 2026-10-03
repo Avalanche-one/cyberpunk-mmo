@@ -7,6 +7,12 @@ class User(AbstractUser):
     pass
 
 
+class Post(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
 class Faction(models.Model):
     SIDE_CHOICES = [
         ("C", "Corporations"),
@@ -37,6 +43,16 @@ class Specialization(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    @property
+    def image_path(self) -> str:
+        return (
+            f"images/specializations/"
+            f"{slugify(self.name)}.png"
+        )
 
     def __str__(self) -> str:
         return self.name

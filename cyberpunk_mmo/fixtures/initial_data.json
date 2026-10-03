@@ -249,5 +249,95 @@
         6
       ]
     }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 1,
+    "fields": {
+      "name": "Update 1.4: Streets of Night City",
+      "text": "Night City just got more dangerous. Update 1.4 introduces new dynamic street encounters, improved gang activity, and additional contracts across Watson and Santo Domingo. Players may now encounter random gang conflicts, corporate patrols, and high-value targets while exploring the city.",
+      "created_at": "2026-09-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 2,
+    "fields": {
+      "name": "Double XP Weekend",
+      "text": "Gear up, mercs. This weekend all players will receive double experience from contracts, combat encounters, and group activities. The event runs from Friday through Sunday, making it the perfect opportunity to level a new character or unlock new specialization skills.",
+      "created_at": "2026-09-04T14:30:00Z"
+    }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 3,
+    "fields": {
+      "name": "New Raid: Arasaka Blacksite",
+      "text": "A classified Arasaka research facility has been discovered beneath Night City. Teams of four can now infiltrate the Blacksite, bypass advanced security systems, fight experimental combat units, and uncover what Arasaka has been hiding underground.",
+      "created_at": "2026-09-07T09:15:00Z"
+    }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 4,
+    "fields": {
+      "name": "Netrunner Rebalance",
+      "text": "Netrunners are receiving a major balance update. Several quickhacks now consume more resources, while successful breach sequences provide stronger temporary bonuses. Enemy netrunners have also received improved AI and can now counter some player hacking attempts.",
+      "created_at": "2026-09-10T16:45:00Z"
+    }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 5,
+    "fields": {
+      "name": "Night City Street Race Championship",
+      "text": "The engines are roaring across Night City. A new limited-time street racing championship is now available. Compete in races across five districts, climb the seasonal leaderboard, and earn exclusive vehicle cosmetics and credits.",
+      "created_at": "2026-09-13T18:00:00Z"
+    }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 6,
+    "fields": {
+      "name": "New Cyberware Has Arrived",
+      "text": "Ripperdocs across Night City have received a fresh shipment of experimental cyberware. The update adds new combat implants, neural processors, optical upgrades, and defensive systems. Some high-end implants require reputation with specific factions before they can be purchased.",
+      "created_at": "2026-09-16T11:20:00Z"
+    }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 7,
+    "fields": {
+      "name": "Gang War: Maelstrom vs The Mox",
+      "text": "Tensions between Maelstrom and The Mox have exploded into open conflict. For a limited time, players can participate in dynamic gang battles throughout Night City. Choose which side to support and complete faction contracts to unlock unique rewards.",
+      "created_at": "2026-09-19T20:00:00Z"
+    }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 8,
+    "fields": {
+      "name": "Update 1.5: Mercenary Contracts",
+      "text": "Fixers have expanded their operations across Night City. Update 1.5 introduces a redesigned contract system with contract difficulty levels, reputation requirements, bonus objectives, and improved rewards. High-level mercenaries can now access elite contracts from the city's most influential fixers.",
+      "created_at": "2026-09-22T12:10:00Z"
+    }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 9,
+    "fields": {
+      "name": "Night City Halloween Event Announced",
+      "text": "Something strange is coming to Night City. Starting October 20, players will be able to participate in a special seasonal event featuring themed contracts, unique enemy encounters, limited cosmetics, and hidden rewards scattered throughout the city.",
+      "created_at": "2026-09-27T17:30:00Z"
+    }
+  },
+  {
+    "model": "cyberpunk_mmo.post",
+    "pk": 10,
+    "fields": {
+      "name": "Server Update and Performance Improvements",
+      "text": "Our latest server update focuses on stability and performance. We have reduced loading times in crowded districts, improved synchronization during large combat encounters, and fixed several issues affecting player connections. Additional optimization updates are already in development.",
+      "created_at": "2026-10-01T08:45:00Z"
+    }
   }
 ]

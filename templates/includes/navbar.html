@@ -1,13 +1,16 @@
 <nav>
   <ul>
     <li>
+      <a href="/">HOME</a>
+    </li>
+    <li>
       <a href="{% url "cyberpunk_mmo:faction-list" %}">FACTIONS</a>
     </li>
     <li>
-      <a href="#">SPECIALIZATIONS</a>
+      <a href="{% url "cyberpunk_mmo:specialization-list" %}">SPECIALIZATIONS</a>
     </li>
     <li>
-      <a href="#">CLASSES</a>
+      <a href="{% url "cyberpunk_mmo:post-list" %}">NEWS</a>
     </li>
     {% if user.is_authenticated %}
       <li>

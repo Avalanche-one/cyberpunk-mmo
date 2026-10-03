@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  {% for specialization in specialization_list %}
+    <img src="{% static specialization.image_path %}" alt="{{ specialization.name }}">
+    <h2>{{ specialization.name }}</h2>
+    <p>{{ specialization.description }}</p>
+  {% empty %}
+    <p>No specializations found, choom!</p>
+  {% endfor %}
+{% endblock %}
