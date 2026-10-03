@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for character in character_list %}
+    <h2>{{ character.name }}</h2>
+    <p>{{ character.level }}</p>
+  {% empty %}
+    <p>No characters yet! Create your first!</p>
+  {% endfor %}
+  <a href="#">Create new character</a>
+{% endblock %}

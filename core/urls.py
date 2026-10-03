@@ -5,4 +5,5 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("cyberpunk_mmo.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]

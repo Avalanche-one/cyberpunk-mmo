@@ -12,6 +12,9 @@ class Post(models.Model):
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ["-created_at"]
+
 
 class Faction(models.Model):
     SIDE_CHOICES = [
@@ -85,6 +88,7 @@ class Character(models.Model):
     level = models.IntegerField(default=1)
 
     class Meta:
+        ordering = ["-created_at"]
         constraints = [
             models.UniqueConstraint(
                 fields=["owner", "name"],

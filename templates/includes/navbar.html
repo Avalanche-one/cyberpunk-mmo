@@ -14,7 +14,7 @@
     </li>
     {% if user.is_authenticated %}
       <li>
-        <a href="#">MY CREW</a>
+        <a href="{% url 'cyberpunk_mmo:character-list' %}">MY CREW</a>
       </li>
     {% endif %}
   </ul>
@@ -24,7 +24,7 @@
       <button type="submit">LOGOUT</button>
     </form>
   {% else %}
-    <a class="btn" href="#">LOGIN</a>
-    <a class="btn" href="#">REGISTRATION</a>
+    <a class="btn" href="{% url 'login' %}">LOGIN</a>
+    <a class="btn" href="{% url 'cyberpunk_mmo:register' %}">REGISTRATION</a>
   {% endif %}
 </nav>

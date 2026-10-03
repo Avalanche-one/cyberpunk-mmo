@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Login to your account</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">LOGIN</button>
+  </form>
+  <p>Do not have account yet? Than create one!</p>
+  <a href="{% url 'cyberpunk_mmo:register' %}">REGISTRATION</a>
+{% endblock %}

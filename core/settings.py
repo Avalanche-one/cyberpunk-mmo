@@ -91,3 +91,7 @@ MAILERS = {
 }
 
 AUTH_USER_MODEL = "cyberpunk_mmo.User"
+
+LOGIN_REDIRECT_URL = "cyberpunk_mmo:index"
+
+LOGOUT_REDIRECT_URL = "cyberpunk_mmo:index"
