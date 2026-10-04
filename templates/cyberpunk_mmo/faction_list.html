@@ -3,10 +3,10 @@
 
 {% block content %}
   {% for faction in faction_list %}
-    <img src="{% static faction.image_path %}" alt="{{ faction.name }}">
-    <h2>{{ faction.name }}</h2>
-    <p>{{ faction.description }}</p>
+    <img class="catalog-image" src="{% static faction.image_path %}" alt="{{ faction.name }}">
+    <h2 class="catalog-title">{{ faction.name }}</h2>
+    <p class="catalog-copy">{{ faction.description }}</p>
   {% empty %}
-    <p>No factions found.</p>
+    <p class="empty-state">No factions found.</p>
   {% endfor %}
 {% endblock %}

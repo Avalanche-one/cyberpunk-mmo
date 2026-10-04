@@ -3,9 +3,9 @@
 
 {% block content %}
   {% for post in post_list %}
-    <h2>{{ post.name }}</h2>
-    <p>{{ post.text }}</p>
+    <h2 class="news-title">{{ post.name }}</h2>
+    <p class="news-copy">{{ post.text }}</p>
   {% empty %}
-    <p>No posts yet.</p>
+    <p class="empty-state">No posts yet.</p>
   {% endfor %}
 {% endblock %}

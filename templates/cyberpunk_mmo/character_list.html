@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <form method="get">
-    <input type="text" name="search" placeholder="Search" value="{{ request.GET.search }}">
-    <button type="submit">Search</button>
+  <form class="search-form" method="get">
+    <input class="search-form__input" type="text" name="search" placeholder="Search" value="{{ request.GET.search }}">
+    <button class="button" type="submit">Search</button>
   </form>
   {% for character in character_list %}
-    <h2><a href="{% url 'cyberpunk_mmo:character-detail' pk=character.id %}">{{ character.name }}</a></h2>
-    <p>{{ character.level }}</p>
+    <h2 class="character-card__title"><a href="{% url 'cyberpunk_mmo:character-detail' pk=character.id %}">{{ character.name }}</a></h2>
+    <p class="character-card__level">Level: {{ character.level }}</p>
   {% empty %}
     {% if request.GET.search %}
-      <p>No characters with this name were found.</p>
+      <p class="empty-state">No characters with this name were found.</p>
     {% else %}
-      <p>No characters yet! Create your first!</p>
+      <p class="empty-state">No characters yet! Create your first!</p>
     {% endif %}
   {% endfor %}
-  <a href="{% url 'cyberpunk_mmo:character-create' %}">Create new character</a>
+  <a class="button" href="{% url 'cyberpunk_mmo:character-create' %}">Create new character</a>
 {% endblock %}

@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Delete this character?</h1>
-  <form action="" method="post">
+  <h1 class="danger-title">Delete this character?</h1>
+  <form class="confirm-form" action="" method="post">
     {% csrf_token %}
 
-    <input type="submit" value="Yes">
+    <input class="button button--danger" type="submit" value="Yes">
   </form>
-  <a href="{% url 'cyberpunk_mmo:character-detail' pk=character.pk %}">
+  <a class="button button--outline" href="{% url 'cyberpunk_mmo:character-detail' pk=character.pk %}">
     Cancel
   </a>
 {% endblock %}

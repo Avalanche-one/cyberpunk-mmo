@@ -43,6 +43,7 @@ class CharacterForm(forms.ModelForm):
         fields = (
             "name",
             "path",
+            "sex",
             "specialization",
             "faction"
         )

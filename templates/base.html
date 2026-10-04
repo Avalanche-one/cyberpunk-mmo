@@ -5,11 +5,11 @@
   {% block title %}<title>Cyberpunk 2077 Online</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {#  {% load static %}#}
-  {#  <link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body>
+<body class="site-body">
   {% include "includes/navbar.html" %}
   {% if messages %}
     <div class="messages">

@@ -1,33 +1,33 @@
-<nav>
-  <ul>
-    <li>
-      <a href="{% url "cyberpunk_mmo:index" %}">HOME</a>
+<nav class="site-nav">
+  <ul class="site-nav__links">
+    <li class="site-nav__item">
+      <a class="site-nav__link" href="{% url "cyberpunk_mmo:index" %}">HOME</a>
     </li>
-    <li>
-      <a href="{% url "cyberpunk_mmo:faction-list" %}">FACTIONS</a>
+    <li class="site-nav__item">
+      <a class="site-nav__link" href="{% url "cyberpunk_mmo:faction-list" %}">FACTIONS</a>
     </li>
-    <li>
-      <a href="{% url "cyberpunk_mmo:specialization-list" %}">SPECIALIZATIONS</a>
+    <li class="site-nav__item">
+      <a class="site-nav__link" href="{% url "cyberpunk_mmo:specialization-list" %}">SPECIALIZATIONS</a>
     </li>
-    <li>
-      <a href="{% url "cyberpunk_mmo:post-list" %}">NEWS</a>
+    <li class="site-nav__item">
+      <a class="site-nav__link" href="{% url "cyberpunk_mmo:post-list" %}">NEWS</a>
     </li>
     {% if user.is_authenticated %}
-      <li>
-        <a href="{% url 'cyberpunk_mmo:profile' %}">MY PROFILE</a>
+      <li class="site-nav__item">
+        <a class="site-nav__link" href="{% url 'cyberpunk_mmo:profile' %}">MY PROFILE</a>
       </li>
-      <li>
-        <a href="{% url 'cyberpunk_mmo:character-list' %}">MY CREW</a>
+      <li class="site-nav__item">
+        <a class="site-nav__link" href="{% url 'cyberpunk_mmo:character-list' %}">MY CREW</a>
       </li>
     {% endif %}
   </ul>
   {% if user.is_authenticated %}
-    <form method="post" action="{% url 'logout' %}">
+    <form class="site-nav__auth" method="post" action="{% url 'logout' %}">
       {% csrf_token %}
-      <button type="submit">LOGOUT</button>
+      <button class="button button--compact button--outline" type="submit">LOGOUT</button>
     </form>
   {% else %}
-    <a class="btn" href="{% url 'login' %}">LOGIN</a>
-    <a class="btn" href="{% url 'cyberpunk_mmo:register' %}">REGISTRATION</a>
+    <a class="button button--compact button--outline" href="{% url 'login' %}">LOGIN</a>
+    <a class="button button--compact" href="{% url 'cyberpunk_mmo:register' %}">REGISTRATION</a>
   {% endif %}
 </nav>

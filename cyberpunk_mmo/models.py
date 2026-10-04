@@ -82,7 +82,13 @@ class Character(models.Model):
         ("smug", "Smuggler"),
         ("rich", "Rich Kid"),
     ]
+    SEX_CHOICES = [
+        ("male", "Male"),
+        ("female", "Female"),
+        ("other", "Other"),
+    ]
     name = models.CharField(max_length=25)
+    sex = models.CharField(max_length=7, choices=SEX_CHOICES, default="male")
     created_at = models.DateTimeField(auto_now_add=True)
     path = models.CharField(max_length=9, choices=PATH_CHOICES)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="characters")

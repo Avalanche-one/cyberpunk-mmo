@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Take your first step into Night City!</h1>
-  <form method="post">
+  <h1 class="form-title">Take your first step into Night City!</h1>
+  <form class="data-form" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">REGISTER</button>
+    <button class="button" type="submit">REGISTER</button>
   </form>
 {% endblock %}

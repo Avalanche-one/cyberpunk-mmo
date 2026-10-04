@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ profile.username }}</h1>
-  <p>First name: {{ profile.first_name|default:"Not provided" }}</p>
-  <p>Last name: {{ profile.last_name|default:"Not provided" }}</p>
-  <p>Email: {{ profile.email|default:"Not provided" }}</p>
-  <p>Joined: {{ profile.date_joined|date:"d F Y" }}</p>
-  <p>Characters: {{ profile.characters.count }}</p>
-  <a href="{% url 'cyberpunk_mmo:profile-update' %}">Edit profile</a>
-  <a href="{% url 'cyberpunk_mmo:profile-delete' %}">Delete account</a>
+  <h1 class="detail-title">{{ profile.username }}</h1>
+  <p class="detail-stat">First name: {{ profile.first_name|default:"Not provided" }}</p>
+  <p class="detail-stat">Last name: {{ profile.last_name|default:"Not provided" }}</p>
+  <p class="detail-stat">Email: {{ profile.email|default:"Not provided" }}</p>
+  <p class="detail-stat">Joined: {{ profile.date_joined|date:"d F Y" }}</p>
+  <p class="detail-stat">Characters: {{ profile.characters.count }}</p>
+  <a class="button" href="{% url 'cyberpunk_mmo:profile-update' %}">Edit profile</a>
+  <a class="button button--danger" href="{% url 'cyberpunk_mmo:profile-delete' %}">Delete account</a>
 {% endblock %}

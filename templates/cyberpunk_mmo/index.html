@@ -1,13 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Your journey begins here!</h1>
-  <h2>Build your dream in the streets of Night City!</h2>
-  <p>A PERSISTENT MMO SET IN THE WORLD OF CYBERPUNK 2077. NEW PEOPLE. NEW STORIES. SAME CITY</p>
-{#  <form>#}
-{#    #}
-{#  </form>#}
+  <h1 class="hero-title">Your journey begins here!</h1>
+  <h2 class="hero-subtitle">Build your dream in the streets of Night City!</h2>
+  <p class="hero-copy">A PERSISTENT MMO SET IN THE WORLD OF CYBERPUNK 2077. NEW PEOPLE. NEW STORIES. SAME CITY</p>
   {% if num_players > 0 %}
-    <h3>Join {{ num_players }} player{{ num_players|pluralize }} around the world!</h3>
+    <h3 class="hero-stat">Join {{ num_players }} player{{ num_players|pluralize }} around the world!</h3>
   {% endif %}
 {% endblock %}
