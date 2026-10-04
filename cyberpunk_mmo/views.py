@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from cyberpunk_mmo.forms import RegisterForm, CharacterCreateForm
+from cyberpunk_mmo.forms import RegisterForm, CharacterForm
 from cyberpunk_mmo.models import (Faction,
                                   Specialization,
                                   Post,
@@ -58,7 +58,7 @@ class CharacterDetailView(LoginRequiredMixin, generic.DetailView):
 
 class CharacterCreateView(LoginRequiredMixin, generic.CreateView):
     model = Character
-    form_class = CharacterCreateForm
+    form_class = CharacterForm
     template_name = "cyberpunk_mmo/character_form.html"
     success_url = reverse_lazy("cyberpunk_mmo:character-list")
 
@@ -70,6 +70,30 @@ class CharacterCreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
+
+
+class CharacterUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Character
+    form_class = CharacterForm
+    template_name = "cyberpunk_mmo/character_form.html"
+    success_url = reverse_lazy("cyberpunk_mmo:character-list")
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
+
+    def get_queryset(self):
+        return Character.objects.filter(owner=self.request.user)
+
+
+class CharacterDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Character
+    success_url = reverse_lazy("cyberpunk_mmo:character-list")
+    template_name = "cyberpunk_mmo/character_confirm_delete.html"
+
+    def get_queryset(self):
+        return Character.objects.filter(owner=self.request.user)
 
 
 class UserCreateView(generic.CreateView):

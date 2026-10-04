@@ -7,7 +7,9 @@ from cyberpunk_mmo.views import (index,
                                  UserCreateView,
                                  CharacterListView,
                                  CharacterDetailView,
-                                 CharacterCreateView)
+                                 CharacterCreateView,
+                                 CharacterUpdateView,
+                                 CharacterDeleteView)
 
 urlpatterns = [
     path("", index, name="index"),
@@ -16,6 +18,8 @@ urlpatterns = [
     path("characters/", CharacterListView.as_view(), name="character-list"),
     path("characters/create/", CharacterCreateView.as_view(), name="character-create"),
     path("characters/<int:pk>/", CharacterDetailView.as_view(), name="character-detail"),
+    path("characters/<int:pk>/update/", CharacterUpdateView.as_view(), name="character-update"),
+    path("characters/<int:pk>/delete/", CharacterDeleteView.as_view(), name="character-delete"),
     path("news/", PostListView.as_view(), name="post-list"),
     path("register/", UserCreateView.as_view(), name="register"),
 ]

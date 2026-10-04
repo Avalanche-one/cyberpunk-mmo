@@ -1,7 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from cyberpunk_mmo.models import Faction, Specialization, Skill, Character
+from cyberpunk_mmo.models import (Faction,
+                                  Specialization,
+                                  Skill,
+                                  Character,
+                                  Post)
 
 
 class FactionModelTests(TestCase):
@@ -13,7 +17,7 @@ class FactionModelTests(TestCase):
         )
 
     def test_str(self):
-        self.assertEqual(str(self.faction), "Kan Tao Test (C)")
+        self.assertEqual(str(self.faction), "Kan Tao Test (Corporations)")
 
     def test_image_path(self):
         self.assertEqual(
@@ -78,4 +82,27 @@ class CharacterModelTest(TestCase):
         self.assertEqual(
             str(self.character),
             "Test Dummy, level - 1, specialization - Test, faction - Test (C)",
+        )
+
+class PostModelTests(TestCase):
+    def setUp(self):
+        self.older_post = Post.objects.create(
+            name="Older Test Post",
+            text="Older Test Post Text"
+        )
+        self.newer_post = Post.objects.create(
+            name="Newer Test Post",
+            text="Newer Test Post Text"
+        )
+
+    def test_str(self):
+        self.assertEqual(
+            str(self.older_post),
+            "Older Test Post"
+        )
+
+    def test_posts_ordered_by_created_at_descending(self):
+        self.assertEqual(
+            list(Post.objects.all()),
+            [self.newer_post, self.older_post],
         )

@@ -17,15 +17,25 @@ class RegisterForm(UserCreationForm):
         )
 
 
-class CharacterCreateForm(forms.ModelForm):
+class CharacterForm(forms.ModelForm):
     def __init__(self, *args, user=None, **kwargs):
         super().__init__(*args, **kwargs)
         self.user = user
 
     def clean_name(self):
         name = self.cleaned_data["name"]
-        if self.user is not None and Character.objects.filter(owner=self.user, name__iexact=name).exists():
-            raise ValidationError("You already have a character with this name.")
+        if self.user is None:
+            return name
+        characters = Character.objects.filter(
+            owner=self.user,
+            name__iexact=name,
+        )
+        if self.instance.pk:
+            characters = characters.exclude(pk=self.instance.pk)
+        if characters.exists():
+            raise ValidationError(
+                "You already have a character with this name."
+            )
         return name
 
     class Meta:

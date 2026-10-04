@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Create your character</h1>
+  <h1>{{ object|yesno:"Update,Create" }} your character</h1>
 
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">CREATE</button>
+    <button type="submit">{{ object|yesno:"Update,Create" }}</button>
   </form>
 {% endblock %}
