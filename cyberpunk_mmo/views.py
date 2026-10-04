@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.views.decorators.http import require_POST
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
@@ -21,6 +22,15 @@ def index(request: HttpRequest) -> HttpResponse:
         "num_players": num_players
     }
     return render(request, "cyberpunk_mmo/index.html", context=context)
+
+
+@require_POST
+def set_theme(request: HttpRequest) -> HttpResponse:
+    allowed_themes = {"original", "phantom"}
+    selected_theme = request.POST.get("theme")
+    if selected_theme in allowed_themes:
+        request.session["theme"] = selected_theme
+    return redirect("cyberpunk_mmo:index")
 
 
 class FactionListView(generic.ListView):

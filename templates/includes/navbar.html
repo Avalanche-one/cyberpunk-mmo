@@ -1,4 +1,18 @@
 <nav class="site-nav">
+  <form class="theme-switcher" method="post" action="{% url 'cyberpunk_mmo:set-theme' %}">
+    {% csrf_token %}
+    <button class="button button--compact theme-switcher__button
+  {% if request.session.theme != 'phantom' %}
+    theme-switcher__button--active
+  {% endif %}" name="theme" value="original" type="submit">Original
+    </button>
+    <button class="button button--compact theme-switcher__button
+  {% if request.session.theme == 'phantom' %}
+    theme-switcher__button--active
+  {% endif %}
+" name="theme" value="phantom" type="submit">Phantom
+    </button>
+  </form>
   <ul class="site-nav__links">
     <li class="site-nav__item">
       <a class="site-nav__link" href="{% url "cyberpunk_mmo:index" %}">HOME</a>

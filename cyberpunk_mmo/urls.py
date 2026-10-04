@@ -12,11 +12,12 @@ from cyberpunk_mmo.views import (index,
                                  CharacterDeleteView,
                                  ProfileDetailView,
                                  ProfileUpdateView,
-                                 ProfileDeleteView)
+                                 ProfileDeleteView, set_theme)
 
 urlpatterns = [
     path("", index, name="index"),
     path("factions/", FactionListView.as_view(), name="faction-list"),
+    path("theme/", set_theme, name="set-theme"),
     path("specializations/", SpecializationListView.as_view(), name="specialization-list"),
     path("characters/", CharacterListView.as_view(), name="character-list"),
     path("characters/create/", CharacterCreateView.as_view(), name="character-create"),
