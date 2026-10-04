@@ -9,7 +9,10 @@ from cyberpunk_mmo.views import (index,
                                  CharacterDetailView,
                                  CharacterCreateView,
                                  CharacterUpdateView,
-                                 CharacterDeleteView)
+                                 CharacterDeleteView,
+                                 ProfileDetailView,
+                                 ProfileUpdateView,
+                                 ProfileDeleteView)
 
 urlpatterns = [
     path("", index, name="index"),
@@ -22,6 +25,9 @@ urlpatterns = [
     path("characters/<int:pk>/delete/", CharacterDeleteView.as_view(), name="character-delete"),
     path("news/", PostListView.as_view(), name="post-list"),
     path("register/", UserCreateView.as_view(), name="register"),
+    path("profile/", ProfileDetailView.as_view(), name="profile"),
+    path("profile/update/", ProfileUpdateView.as_view(), name="profile-update"),
+    path("profile/delete/", ProfileDeleteView.as_view(), name="profile-delete"),
 ]
 
 app_name = "cyberpunk_mmo"

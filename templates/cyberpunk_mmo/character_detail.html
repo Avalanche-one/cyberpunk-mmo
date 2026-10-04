@@ -7,6 +7,20 @@
   <p>{{ character.get_path_display }}</p>
   <p>{{ character.faction.name }}</p>
   <p>{{ character.specialization.name }}</p>
+  <h2>Skills</h2>
+
+  {% if character.specialization.skills.exists %}
+    <ul>
+      {% for skill in character.specialization.skills.all %}
+        <li>
+          <strong>{{ skill.name }}</strong>
+          — {{ skill.description }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>This specialization has no skills.</p>
+  {% endif %}
   <a href="{% url 'cyberpunk_mmo:character-update' pk=character.id %}">
     Update this choom
   </a>

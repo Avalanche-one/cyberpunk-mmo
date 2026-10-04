@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Delete your profile?</h1>
+  <p>
+    This action cannot be undone. Your account and all your characters
+    will be permanently deleted.
+  </p>
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Yes">
+  </form>
+  <a href="{% url 'cyberpunk_mmo:profile' %}">
+    Cancel
+  </a>
+{% endblock %}
