@@ -1,14 +1,12 @@
 import os
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-g@-y=5+iabr^!6)n5gw88-4bck-a@)h5j7n5272nh%3gdrv-!=")
-
-DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
-
-ALLOWED_HOSTS = ["127.0.0.1"]
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-g@-y=5+iabr^!6)n5gw88-4bck-a@)h5j7n5272nh%3gdrv-!=",
+)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -22,6 +20,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -80,6 +79,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+STATIC_ROOT = "staticfiles/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",

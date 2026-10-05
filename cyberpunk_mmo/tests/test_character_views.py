@@ -2,9 +2,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from cyberpunk_mmo.models import (Character,
-                                  Faction,
-                                  Specialization)
+from cyberpunk_mmo.models import Character, Faction, Specialization
 
 
 class CharacterListViewTests(TestCase):
@@ -52,9 +50,7 @@ class CharacterListViewTests(TestCase):
 
     def test_user_can_see_only_his_characters(self):
         self.client.force_login(self.user)
-        response = self.client.get(
-            reverse("cyberpunk_mmo:character-list")
-        )
+        response = self.client.get(reverse("cyberpunk_mmo:character-list"))
         characters = response.context["character_list"]
         self.assertIn(self.character, characters)
         self.assertNotIn(self.another_character, characters)

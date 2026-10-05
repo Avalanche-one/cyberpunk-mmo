@@ -24,7 +24,7 @@ class Faction(models.Model):
         ("C", "Corporations"),
         ("G", "Gangs"),
         ("N", "Nomads"),
-        ("E", "Edgerunners")
+        ("E", "Edgerunners"),
     ]
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
@@ -36,10 +36,7 @@ class Faction(models.Model):
 
     @property
     def image_path(self) -> str:
-        return (
-            f"images/factions/"
-            f"{slugify(self.name)}.png"
-        )
+        return f"images/factions/" f"{slugify(self.name)}.png"
 
     def __str__(self) -> str:
         return f"{self.name} ({self.get_side_display()})"
@@ -55,10 +52,7 @@ class Specialization(models.Model):
 
     @property
     def image_path(self) -> str:
-        return (
-            f"images/specializations/"
-            f"{slugify(self.name)}.png"
-        )
+        return f"images/specializations/" f"{slugify(self.name)}.png"
 
     def __str__(self) -> str:
         return self.name
@@ -97,8 +91,12 @@ class Character(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     path = models.CharField(max_length=9, choices=PATH_CHOICES)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="characters")
-    specialization = models.ForeignKey(Specialization, on_delete=models.CASCADE, related_name="characters")
-    faction = models.ForeignKey(Faction, on_delete=models.CASCADE, related_name="characters")
+    specialization = models.ForeignKey(
+        Specialization, on_delete=models.CASCADE, related_name="characters"
+    )
+    faction = models.ForeignKey(
+        Faction, on_delete=models.CASCADE, related_name="characters"
+    )
     level = models.IntegerField(default=1)
 
     class Meta:
@@ -110,8 +108,8 @@ class Character(models.Model):
             ),
             models.CheckConstraint(
                 condition=models.Q(level__gte=1, level__lte=60),
-                name="character_level_between_1_and_60"
-            )
+                name="character_level_between_1_and_60",
+            ),
         ]
 
     @property
@@ -126,7 +124,9 @@ class Character(models.Model):
         )
 
     def __str__(self):
-        return (f"{self.name}, "
-                f"level - {self.level}, "
-                f"specialization - {self.specialization}, "
-                f"faction - {self.faction}")
+        return (
+            f"{self.name}, "
+            f"level - {self.level}, "
+            f"specialization - {self.specialization}, "
+            f"faction - {self.faction}"
+        )

@@ -6,13 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cyberpunk_mmo', '0010_character_sex'),
+        ("cyberpunk_mmo", "0010_character_sex"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='character',
-            name='sex',
-            field=models.CharField(choices=[('male', 'Male'), ('female', 'Female')], default='male', max_length=7),
+            model_name="character",
+            name="sex",
+            field=models.CharField(
+                choices=[("male", "Male"), ("female", "Female")],
+                default="male",
+                max_length=7,
+            ),
         ),
     ]

@@ -4,11 +4,7 @@ from django.test import TestCase
 from django.db import IntegrityError, transaction
 from django.utils import timezone
 
-from cyberpunk_mmo.models import (Faction,
-                                  Specialization,
-                                  Skill,
-                                  Character,
-                                  Post)
+from cyberpunk_mmo.models import Faction, Specialization, Skill, Character, Post
 
 
 class FactionModelTests(TestCase):
@@ -35,8 +31,7 @@ class FactionModelTests(TestCase):
 class SpecializationModelTests(TestCase):
     def setUp(self):
         self.specialization = Specialization.objects.create(
-            name="Cool Guy",
-            description="Test Spec"
+            name="Cool Guy", description="Test Spec"
         )
 
     def test_str(self):
@@ -120,22 +115,18 @@ class CharacterModelTest(TestCase):
             2,
         )
 
+
 class PostModelTests(TestCase):
     def setUp(self):
         self.older_post = Post.objects.create(
-            name="Older Test Post",
-            text="Older Test Post Text"
+            name="Older Test Post", text="Older Test Post Text"
         )
         self.newer_post = Post.objects.create(
-            name="Newer Test Post",
-            text="Newer Test Post Text"
+            name="Newer Test Post", text="Newer Test Post Text"
         )
 
     def test_str(self):
-        self.assertEqual(
-            str(self.older_post),
-            "Older Test Post"
-        )
+        self.assertEqual(str(self.older_post), "Older Test Post")
 
     def test_posts_ordered_by_created_at_descending(self):
         now = timezone.now()

@@ -70,18 +70,12 @@ class ProfileViewTests(TestCase):
     def test_user_deletion_deletes_all_his_chars(self):
         user_id = self.user.pk
         self.client.force_login(self.user)
-        self.client.post(
-            reverse("cyberpunk_mmo:profile-delete")
-        )
-        self.assertFalse(
-            Character.objects.filter(owner_id=user_id).exists()
-        )
+        self.client.post(reverse("cyberpunk_mmo:profile-delete"))
+        self.assertFalse(Character.objects.filter(owner_id=user_id).exists())
 
     def test_deleted_user_is_not_authenticated(self):
         self.client.force_login(self.user)
-        response = self.client.post(
-            reverse("cyberpunk_mmo:profile-delete")
-        )
+        response = self.client.post(reverse("cyberpunk_mmo:profile-delete"))
         self.assertRedirects(
             response,
             reverse("cyberpunk_mmo:index"),

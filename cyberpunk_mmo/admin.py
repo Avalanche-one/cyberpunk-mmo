@@ -2,14 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.http.request import HttpRequest
 
-from cyberpunk_mmo.models import (
-    User,
-    Faction,
-    Specialization,
-    Skill,
-    Character,
-    Post
-)
+from cyberpunk_mmo.models import User, Faction, Specialization, Skill, Character, Post
 
 
 @admin.register(Post)
@@ -25,7 +18,12 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = BaseUserAdmin.add_fieldsets + (
         (
             "Additional info",
-            {"fields": ("first_name", "last_name",)},
+            {
+                "fields": (
+                    "first_name",
+                    "last_name",
+                )
+            },
         ),
     )
 
@@ -59,7 +57,9 @@ class SkillAdmin(admin.ModelAdmin):
 
     @admin.display(description="Specializations")
     def display_specializations(self, obj) -> str:
-        return ", ".join(specialization.name for specialization in obj.specialization.all())
+        return ", ".join(
+            specialization.name for specialization in obj.specialization.all()
+        )
 
 
 @admin.register(Character)

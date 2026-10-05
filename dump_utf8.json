@@ -1,0 +1,457 @@
+[
+{
+    "model": "cyberpunk_mmo.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$JkCeMj5CxnAwknd1te1L3v$CQZSGLprs4wU9pEuPbdXIMaP9SrJ/JMgrdwel+nnmUg=",
+        "last_login": "2026-10-05T08:52:09.072Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "Horus",
+        "last_name": "Luperkal",
+        "email": "new_example@faker.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-10-02T06:42:02Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cyberpunk_mmo.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$Mv2cQB8eMtFhx2uQ2hw1ra$AS9vya2HrXNdQMquKJvX/8sxv9PqRCTnoxAEk74ua5Y=",
+        "last_login": "2026-10-03T14:28:15.879Z",
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-03T14:27:42.917Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cyberpunk_mmo.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$VtkSalW4ahu0sGtrdM2wY9$kD+FDSbkMvfuOyP8SISCbjs1OvpO/tZg0SR1pRtZjY8=",
+        "last_login": "2026-10-03T14:50:00.899Z",
+        "is_superuser": false,
+        "username": "test2",
+        "first_name": "Billy",
+        "last_name": "Joel",
+        "email": "test@test.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-03T14:49:40.251Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cyberpunk_mmo.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$SZd9DozFPUrzuF40CKVycs$0LSaXQpUE8mtS3PVcTFEP9uCa690SExqiIOpiFW2qDM=",
+        "last_login": "2026-10-04T13:21:11.223Z",
+        "is_superuser": false,
+        "username": "Ksu",
+        "first_name": "dfjhkh",
+        "last_name": "ety",
+        "email": "rgt@b.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-04T13:20:53.591Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 1,
+    "fields": {
+        "name": "Update 1.4: Streets of Night City",
+        "text": "Night City just got more dangerous. Update 1.4 introduces new dynamic street encounters, improved gang activity, and additional contracts across Watson and Santo Domingo. Players may now encounter random gang conflicts, corporate patrols, and high-value targets while exploring the city.",
+        "created_at": "2026-09-01T10:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 2,
+    "fields": {
+        "name": "Double XP Weekend",
+        "text": "Gear up, mercs. This weekend all players will receive double experience from contracts, combat encounters, and group activities. The event runs from Friday through Sunday, making it the perfect opportunity to level a new character or unlock new specialization skills.",
+        "created_at": "2026-09-04T14:30:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 3,
+    "fields": {
+        "name": "New Raid: Arasaka Blacksite",
+        "text": "A classified Arasaka research facility has been discovered beneath Night City. Teams of four can now infiltrate the Blacksite, bypass advanced security systems, fight experimental combat units, and uncover what Arasaka has been hiding underground.",
+        "created_at": "2026-09-07T09:15:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 4,
+    "fields": {
+        "name": "Netrunner Rebalance",
+        "text": "Netrunners are receiving a major balance update. Several quickhacks now consume more resources, while successful breach sequences provide stronger temporary bonuses. Enemy netrunners have also received improved AI and can now counter some player hacking attempts.",
+        "created_at": "2026-09-10T16:45:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 5,
+    "fields": {
+        "name": "Night City Street Race Championship",
+        "text": "The engines are roaring across Night City. A new limited-time street racing championship is now available. Compete in races across five districts, climb the seasonal leaderboard, and earn exclusive vehicle cosmetics and credits.",
+        "created_at": "2026-09-13T18:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 6,
+    "fields": {
+        "name": "New Cyberware Has Arrived",
+        "text": "Ripperdocs across Night City have received a fresh shipment of experimental cyberware. The update adds new combat implants, neural processors, optical upgrades, and defensive systems. Some high-end implants require reputation with specific factions before they can be purchased.",
+        "created_at": "2026-09-16T11:20:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 7,
+    "fields": {
+        "name": "Gang War: Maelstrom vs The Mox",
+        "text": "Tensions between Maelstrom and The Mox have exploded into open conflict. For a limited time, players can participate in dynamic gang battles throughout Night City. Choose which side to support and complete faction contracts to unlock unique rewards.",
+        "created_at": "2026-09-19T20:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 8,
+    "fields": {
+        "name": "Update 1.5: Mercenary Contracts",
+        "text": "Fixers have expanded their operations across Night City. Update 1.5 introduces a redesigned contract system with contract difficulty levels, reputation requirements, bonus objectives, and improved rewards. High-level mercenaries can now access elite contracts from the city's most influential fixers.",
+        "created_at": "2026-09-22T12:10:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 9,
+    "fields": {
+        "name": "Night City Halloween Event Announced",
+        "text": "Something strange is coming to Night City. Starting October 20, players will be able to participate in a special seasonal event featuring themed contracts, unique enemy encounters, limited cosmetics, and hidden rewards scattered throughout the city.",
+        "created_at": "2026-09-27T17:30:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.post",
+    "pk": 10,
+    "fields": {
+        "name": "Server Update and Performance Improvements",
+        "text": "Our latest server update focuses on stability and performance. We have reduced loading times in crowded districts, improved synchronization during large combat encounters, and fixed several issues affecting player connections. Additional optimization updates are already in development.",
+        "created_at": "2026-10-01T08:45:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.faction",
+    "pk": 1,
+    "fields": {
+        "name": "Arasaka",
+        "description": "A powerful Japanese megacorporation specializing in security, banking, and advanced technology.",
+        "side": "C",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.faction",
+    "pk": 2,
+    "fields": {
+        "name": "Militech",
+        "description": "A major military corporation focused on weapons, private security, and advanced combat technology.",
+        "side": "C",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.faction",
+    "pk": 3,
+    "fields": {
+        "name": "Maelstrom",
+        "description": "A violent gang obsessed with extreme cybernetic modification and dangerous technology.",
+        "side": "G",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.faction",
+    "pk": 4,
+    "fields": {
+        "name": "The Mox",
+        "description": "A gang formed to protect its members and allies from exploitation on the streets of Night City.",
+        "side": "G",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.faction",
+    "pk": 5,
+    "fields": {
+        "name": "Aldecaldos",
+        "description": "A nomad family known for loyalty, smuggling, transportation, and survival beyond Night City.",
+        "side": "N",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.faction",
+    "pk": 6,
+    "fields": {
+        "name": "Afterlife Mercenaries",
+        "description": "Independent edgerunners and mercenaries taking dangerous contracts across Night City.",
+        "side": "E",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.specialization",
+    "pk": 1,
+    "fields": {
+        "name": "Solo",
+        "description": "Combat-focused mercenary specializing in firearms, durability, and direct assaults.",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.specialization",
+    "pk": 2,
+    "fields": {
+        "name": "Netrunner",
+        "description": "Cyber specialist who hacks networks, disables security systems, and attacks enemies through cyberspace.",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.specialization",
+    "pk": 3,
+    "fields": {
+        "name": "Techie",
+        "description": "Engineering expert specializing in technology, equipment upgrades, repairs, and technical solutions.",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.specialization",
+    "pk": 4,
+    "fields": {
+        "name": "Assassin",
+        "description": "Stealth-focused operative specializing in infiltration, silent takedowns, and precision attacks.",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.specialization",
+    "pk": 5,
+    "fields": {
+        "name": "Fixer",
+        "description": "Street-connected specialist who relies on contacts, negotiation, information, and access to valuable resources.",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.specialization",
+    "pk": 6,
+    "fields": {
+        "name": "Medtech",
+        "description": "Medical specialist trained to heal allies, improve recovery, and use advanced medical technology.",
+        "created_at": "2026-10-02T08:00:00Z"
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 1,
+    "fields": {
+        "name": "Weapon Handling",
+        "description": "Improves accuracy, recoil control, and overall effectiveness with firearms.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            4,
+            5,
+            6,
+            2,
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 2,
+    "fields": {
+        "name": "Street Awareness",
+        "description": "Improves the ability to detect threats, hidden enemies, and suspicious activity.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            4,
+            5,
+            6,
+            2,
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 3,
+    "fields": {
+        "name": "Combat Reflexes",
+        "description": "Improves reaction speed and effectiveness during fast-paced combat.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            4,
+            6,
+            1
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 4,
+    "fields": {
+        "name": "Heavy Weapons Training",
+        "description": "Improves effectiveness with heavy firearms and high-powered weapons.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            1
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 5,
+    "fields": {
+        "name": "Stealth",
+        "description": "Reduces detection and improves effectiveness while moving unnoticed.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            4,
+            5,
+            2
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 6,
+    "fields": {
+        "name": "Quickhacking",
+        "description": "Allows the use of combat quickhacks against enemies, devices, and security systems.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            2
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 7,
+    "fields": {
+        "name": "Cybertech Expertise",
+        "description": "Improves interaction with cyberware and advanced technological equipment.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            6,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 8,
+    "fields": {
+        "name": "Engineering",
+        "description": "Improves the ability to repair, modify, and operate complex technical equipment.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 9,
+    "fields": {
+        "name": "Street Connections",
+        "description": "Provides better access to information, contacts, equipment, and underground services.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            5
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.skill",
+    "pk": 10,
+    "fields": {
+        "name": "Trauma Care",
+        "description": "Improves healing effectiveness and the ability to stabilize injured allies.",
+        "created_at": "2026-10-02T08:00:00Z",
+        "specialization": [
+            6
+        ]
+    }
+},
+{
+    "model": "cyberpunk_mmo.character",
+    "pk": 1,
+    "fields": {
+        "name": "Jonny Silverhand",
+        "sex": "male",
+        "created_at": "2026-10-02T08:57:53.925Z",
+        "path": "veteran",
+        "owner": 1,
+        "specialization": 1,
+        "faction": 4,
+        "level": 1
+    }
+},
+{
+    "model": "cyberpunk_mmo.character",
+    "pk": 2,
+    "fields": {
+        "name": "Adam Smasher",
+        "sex": "male",
+        "created_at": "2026-10-03T16:11:02.608Z",
+        "path": "merc",
+        "owner": 3,
+        "specialization": 1,
+        "faction": 1,
+        "level": 1
+    }
+},
+{
+    "model": "cyberpunk_mmo.character",
+    "pk": 3,
+    "fields": {
+        "name": "Judy",
+        "sex": "female",
+        "created_at": "2026-10-05T07:21:34.027Z",
+        "path": "netrunner",
+        "owner": 1,
+        "specialization": 2,
+        "faction": 4,
+        "level": 1
+    }
+}
+]

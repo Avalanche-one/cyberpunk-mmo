@@ -9,12 +9,7 @@ from cyberpunk_mmo.models import Character
 class RegisterForm(UserCreationForm):
     class Meta:
         model = get_user_model()
-        fields = (
-            "username",
-            "email",
-            "first_name",
-            "last_name"
-        )
+        fields = ("username", "email", "first_name", "last_name")
 
 
 class CharacterForm(forms.ModelForm):
@@ -33,26 +28,15 @@ class CharacterForm(forms.ModelForm):
         if self.instance.pk:
             characters = characters.exclude(pk=self.instance.pk)
         if characters.exists():
-            raise ValidationError(
-                "You already have a character with this name."
-            )
+            raise ValidationError("You already have a character with this name.")
         return name
 
     class Meta:
         model = Character
-        fields = (
-            "name",
-            "path",
-            "sex",
-            "specialization",
-            "faction"
-        )
+        fields = ("name", "path", "sex", "specialization", "faction")
+
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
-        fields = (
-            "first_name",
-            "last_name",
-            "email"
-        )
+        fields = ("first_name", "last_name", "email")
