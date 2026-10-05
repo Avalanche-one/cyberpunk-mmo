@@ -1,13 +1,14 @@
+import os
 from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-g@-y=5+iabr^!6)n5gw88-4bck-a@)h5j7n5272nh%3gdrv-!="
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-g@-y=5+iabr^!6)n5gw88-4bck-a@)h5j7n5272nh%3gdrv-!=")
 
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -92,6 +93,6 @@ MAILERS = {
 
 AUTH_USER_MODEL = "cyberpunk_mmo.User"
 
-LOGIN_REDIRECT_URL = "cyberpunk_mmo:index"
+LOGIN_REDIRECT_URL = "/"
 
-LOGOUT_REDIRECT_URL = "cyberpunk_mmo:index"
+LOGOUT_REDIRECT_URL = "/"
