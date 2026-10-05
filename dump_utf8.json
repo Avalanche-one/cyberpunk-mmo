@@ -6,7 +6,7 @@
         "password": "pbkdf2_sha256$1500000$JkCeMj5CxnAwknd1te1L3v$CQZSGLprs4wU9pEuPbdXIMaP9SrJ/JMgrdwel+nnmUg=",
         "last_login": "2026-10-05T08:52:09.072Z",
         "is_superuser": false,
-        "username": "test",
+        "username": "admin",
         "first_name": "Horus",
         "last_name": "Luperkal",
         "email": "new_example@faker.com",

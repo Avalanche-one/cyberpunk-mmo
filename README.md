@@ -125,6 +125,10 @@ python manage.py createsuperuser
 
 Follow the prompts to create the account. The admin interface will be available at `/admin/`.
 
+Also you can login as a common test user using: 
+username - "test"
+password - "cash312"
+
 ### 8. Run the development server
 
 ```bash
