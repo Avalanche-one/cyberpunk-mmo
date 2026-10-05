@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
   <form class="search-form" method="get">
@@ -6,8 +7,19 @@
     <button class="button" type="submit">Search</button>
   </form>
   {% for character in character_list %}
-    <h2 class="character-card__title"><a href="{% url 'cyberpunk_mmo:character-detail' pk=character.id %}">{{ character.name }}</a></h2>
-    <p class="character-card__level">Level: {{ character.level }}</p>
+    <article class="character-card">
+      <div class="character-card__content">
+        <h2 class="character-card__title"><a href="{% url 'cyberpunk_mmo:character-detail' pk=character.id %}">{{ character.name }}</a></h2>
+        <p class="character-card__level">Level: {{ character.level }}</p>
+      </div>
+      <div class="character-card__media">
+        <img
+            class="character-card__avatar"
+            src="{% static character.avatar_path %}"
+            alt="{{ character.sex }} {{ character.specialization.name }} from {{ character.faction.name }}"
+        >
+      </div>
+    </article>
   {% empty %}
     {% if request.GET.search %}
       <p class="empty-state">No characters with this name were found.</p>

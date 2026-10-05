@@ -2,12 +2,23 @@
 {% load static %}
 
 {% block content %}
-  <h1 class="detail-title">{{ character.name }}</h1>
-  <p class="detail-stat"> Level: {{ character.level }}</p>
-  <p class="detail-stat">Path: {{ character.get_path_display }}</p>
-  <p class="detail-stat">Sex: {{ character.get_sex_display }}</p>
-  <p class="detail-stat">Faction: {{ character.faction.name }}</p>
-  <p class="detail-stat">Specialization: {{ character.specialization.name }}</p>
+  <div class="title-block">
+    <h1 class="detail-title">{{ character.name }}</h1>
+  </div>
+  <div class="character-overview">
+    <img
+        class="character-avatar"
+        src="{% static character.avatar_path %}"
+        alt="{{ character.sex }} {{ character.specialization.name }} from {{ character.faction.name }}"
+    >
+    <div class="character-stats">
+      <p class="detail-stat">Level: {{ character.level }}</p>
+      <p class="detail-stat">Path: {{ character.get_path_display }}</p>
+      <p class="detail-stat">Sex: {{ character.get_sex_display }}</p>
+      <p class="detail-stat">Faction: {{ character.faction.name }}</p>
+      <p class="detail-stat">Specialization: {{ character.specialization.name }}</p>
+    </div>
+  </div>
   <h2 class="section-title">Skills</h2>
   {% if character.specialization.skills.exists %}
     <ul class="skill-list">

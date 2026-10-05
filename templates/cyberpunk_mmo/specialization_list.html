@@ -3,7 +3,7 @@
 
 {% block content %}
   {% for specialization in specialization_list %}
-    <img class="catalog-image" src="{% static specialization.image_path %}" alt="{{ specialization.name }}">
+    <img class="catalog-image specialization-image" src="{% static specialization.image_path %}" alt="{{ specialization.name }}">
     <h2 class="catalog-title">{{ specialization.name }}</h2>
     <p class="catalog-copy">{{ specialization.description }}</p>
   {% empty %}

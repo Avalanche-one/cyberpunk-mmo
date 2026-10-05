@@ -1,5 +1,8 @@
+from datetime import timedelta
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+from django.db import IntegrityError, transaction
+from django.utils import timezone
 
 from cyberpunk_mmo.models import (Faction,
                                   Specialization,
@@ -73,6 +76,8 @@ class CharacterModelTest(TestCase):
         )
         self.character = Character.objects.create(
             name="Test Dummy",
+            path="merc",
+            sex="male",
             specialization=self.specialization,
             faction=self.faction,
             owner=self.user,
@@ -81,7 +86,38 @@ class CharacterModelTest(TestCase):
     def test_str(self):
         self.assertEqual(
             str(self.character),
-            "Test Dummy, level - 1, specialization - Test, faction - Test (C)",
+            "Test Dummy, level - 1, specialization - Test, faction - Test (Corporations)",
+        )
+
+    def test_owner_cannot_have_characters_with_same_name(self):
+        with self.assertRaises(IntegrityError):
+            with transaction.atomic():
+                Character.objects.create(
+                    name=self.character.name,
+                    sex="male",
+                    path="merc",
+                    owner=self.user,
+                    specialization=self.specialization,
+                    faction=self.faction,
+                )
+
+    def test_different_owners_can_have_characters_with_same_name(self):
+        second_user = get_user_model().objects.create_user(
+            username="second_user",
+            password="testpass123",
+        )
+        second_character = Character.objects.create(
+            name=self.character.name,
+            path="merc",
+            owner=second_user,
+            specialization=self.specialization,
+            faction=self.faction,
+        )
+        self.assertEqual(second_character.name, self.character.name)
+        self.assertNotEqual(second_character.owner, self.character.owner)
+        self.assertEqual(
+            Character.objects.filter(name=self.character.name).count(),
+            2,
         )
 
 class PostModelTests(TestCase):
@@ -102,6 +138,13 @@ class PostModelTests(TestCase):
         )
 
     def test_posts_ordered_by_created_at_descending(self):
+        now = timezone.now()
+        Post.objects.filter(pk=self.older_post.pk).update(
+            created_at=now - timedelta(days=1),
+        )
+        Post.objects.filter(pk=self.newer_post.pk).update(
+            created_at=now,
+        )
         self.assertEqual(
             list(Post.objects.all()),
             [self.newer_post, self.older_post],

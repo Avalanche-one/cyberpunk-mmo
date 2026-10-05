@@ -75,6 +75,12 @@ class Skill(models.Model):
 
 
 class Character(models.Model):
+    AVATAR_NAMES = {
+        "C": "corporations",
+        "G": "gangs",
+        "N": "nomads",
+        "E": "edgerunners",
+    }
     PATH_CHOICES = [
         ("veteran", "War Veteran"),
         ("merc", "Mercenary"),
@@ -108,6 +114,17 @@ class Character(models.Model):
                 name="character_level_between_1_and_60"
             )
         ]
+
+    @property
+    def avatar_path(self):
+        specialization_name = slugify(self.specialization.name)
+        side_name = self.AVATAR_NAMES[self.faction.side]
+        return (
+            "images/characters/avatars/"
+            f"{specialization_name}-"
+            f"{self.sex}-"
+            f"{side_name}.jpg"
+        )
 
     def __str__(self):
         return (f"{self.name}, "
