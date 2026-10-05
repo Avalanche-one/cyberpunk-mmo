@@ -91,7 +91,6 @@ class Character(models.Model):
     SEX_CHOICES = [
         ("male", "Male"),
         ("female", "Female"),
-        ("other", "Other"),
     ]
     name = models.CharField(max_length=25)
     sex = models.CharField(max_length=7, choices=SEX_CHOICES, default="male")
