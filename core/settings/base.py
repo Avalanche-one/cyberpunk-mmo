@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = os.environ.get(
     "DJANGO_SECRET_KEY",
-    "django-insecure-g@-y=5+iabr^!6)n5gw88-4bck-a@)h5j7n5272nh%3gdrv-!=",
+    "django-insecure-zGJ-GO-YebdUU-IVBfvy-5GU-pqx-3OZ1-xKQ-qx456fxgch--435-4543dsfdsfd",
 )
 
 INSTALLED_APPS = [
