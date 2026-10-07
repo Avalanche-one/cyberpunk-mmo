@@ -1,6 +1,7 @@
 <nav class="site-nav">
   <form class="theme-switcher" method="post" action="{% url 'cyberpunk_mmo:set-theme' %}">
     {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
     <button class="button button--compact theme-switcher__button
   {% if request.session.theme != 'phantom' %}
     theme-switcher__button--active

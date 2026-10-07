@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.contrib.auth import get_user_model, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -25,6 +26,13 @@ def set_theme(request: HttpRequest) -> HttpResponse:
     selected_theme = request.POST.get("theme")
     if selected_theme in allowed_themes:
         request.session["theme"] = selected_theme
+    next_url = request.POST.get("next")
+    if next_url and url_has_allowed_host_and_scheme(
+        url=next_url,
+        allowed_hosts={request.get_host()},
+        require_https=request.is_secure(),
+    ):
+        return redirect(next_url)
     return redirect("cyberpunk_mmo:index")
 
 
