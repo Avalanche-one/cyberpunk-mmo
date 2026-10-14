@@ -3,10 +3,7 @@ from django.utils.http import url_has_allowed_host_and_scheme
 from django.contrib.auth import get_user_model, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.decorators.http import require_POST
-from django.http.request import HttpRequest
-from django.http.response import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -14,26 +11,31 @@ from cyberpunk_mmo.forms import RegisterForm, CharacterForm, ProfileUpdateForm
 from cyberpunk_mmo.models import Faction, Specialization, Post, Character
 
 
-def index(request: HttpRequest) -> HttpResponse:
-    num_players = get_user_model().objects.count()
-    context = {"num_players": num_players}
-    return render(request, "cyberpunk_mmo/index.html", context=context)
+class IndexView(generic.TemplateView):
+    template_name = "cyberpunk_mmo/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["num_players"] = get_user_model().objects.count()
+        return context
 
 
-@require_POST
-def set_theme(request: HttpRequest) -> HttpResponse:
+class SetThemeView(generic.View):
+    http_method_names = ["post"]
     allowed_themes = {"original", "phantom"}
-    selected_theme = request.POST.get("theme")
-    if selected_theme in allowed_themes:
-        request.session["theme"] = selected_theme
-    next_url = request.POST.get("next")
-    if next_url and url_has_allowed_host_and_scheme(
-        url=next_url,
-        allowed_hosts={request.get_host()},
-        require_https=request.is_secure(),
-    ):
-        return redirect(next_url)
-    return redirect("cyberpunk_mmo:index")
+
+    def post(self, request, *args, **kwargs):
+        selected_theme = request.POST.get("theme")
+        if selected_theme in self.allowed_themes:
+            request.session["theme"] = selected_theme
+        next_url = request.POST.get("next")
+        if next_url and url_has_allowed_host_and_scheme(
+                url=next_url,
+                allowed_hosts={request.get_host()},
+                require_https=request.is_secure(),
+        ):
+            return redirect(next_url)
+        return redirect("cyberpunk_mmo:index")
 
 
 class FactionListView(generic.ListView):
