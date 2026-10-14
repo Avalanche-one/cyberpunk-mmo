@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="title-block">
+    <h1 class="detail-title">{{ character.name }}</h1>
+  </div>
+  <div class="character-overview">
+    <img
+        class="character-avatar"
+        src="{% static character.avatar_path %}"
+        alt="{{ character.sex }} {{ character.specialization.name }} from {{ character.faction.name }}"
+    >
+    <div class="character-stats">
+      <p class="detail-stat">Level: {{ character.level }}</p>
+      <p class="detail-stat">Path: {{ character.get_path_display }}</p>
+      <p class="detail-stat">Sex: {{ character.get_sex_display }}</p>
+      <p class="detail-stat">Faction: {{ character.faction.name }}</p>
+      <p class="detail-stat">Specialization: {{ character.specialization.name }}</p>
+    </div>
+  </div>
+  <h2 class="section-title">Skills</h2>
+  {% if character.specialization.skills.exists %}
+    <ul class="skill-list">
+      {% for skill in character.specialization.skills.all %}
+        <li class="skill-list__item">
+          <strong>{{ skill.name }}</strong>
+          — {{ skill.description }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty-state">This specialization has no skills.</p>
+  {% endif %}
+  <a class="button" href="{% url 'cyberpunk_mmo:character-update' pk=character.id %}">
+    Update this choom
+  </a>
+  <a class="button button--danger" href="{% url 'cyberpunk_mmo:character-delete' pk=character.id %}">
+    Delete this choom
+  </a>
+  <a class="button button--outline" href="{% url 'cyberpunk_mmo:character-list' %}">
+    Back to my crew
+  </a>
+{% endblock %}
