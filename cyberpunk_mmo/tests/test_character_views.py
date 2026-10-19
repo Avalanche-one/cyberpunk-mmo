@@ -45,7 +45,7 @@ class CharacterListViewTests(TestCase):
         response = self.client.get(url)
         self.assertRedirects(
             response,
-            f"{reverse('login')}?next={url}",
+            f"{reverse('user:login')}?next={url}",
         )
 
     def test_user_can_see_only_his_characters(self):

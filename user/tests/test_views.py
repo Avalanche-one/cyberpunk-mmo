@@ -38,17 +38,17 @@ class ProfileViewTests(TestCase):
         )
 
     def test_profile_requires_login(self):
-        url = reverse("cyberpunk_mmo:profile")
+        url = reverse("user:profile")
         response = self.client.get(url)
         self.assertRedirects(
             response,
-            f"{reverse('login')}?next={url}",
+            f"{reverse('user:login')}?next={url}",
         )
 
     def test_user_can_update_only_own_profile(self):
         self.client.force_login(self.user)
         response = self.client.post(
-            reverse("cyberpunk_mmo:profile-update"),
+            reverse("user:profile-update"),
             {
                 "first_name": "New name",
                 "last_name": "New surname",
@@ -57,7 +57,7 @@ class ProfileViewTests(TestCase):
         )
         self.assertRedirects(
             response,
-            reverse("cyberpunk_mmo:profile"),
+            reverse("user:profile"),
         )
         self.user.refresh_from_db()
         self.another_user.refresh_from_db()
@@ -70,19 +70,19 @@ class ProfileViewTests(TestCase):
     def test_user_deletion_deletes_all_his_chars(self):
         user_id = self.user.pk
         self.client.force_login(self.user)
-        self.client.post(reverse("cyberpunk_mmo:profile-delete"))
+        self.client.post(reverse("user:profile-delete"))
         self.assertFalse(Character.objects.filter(owner_id=user_id).exists())
 
     def test_deleted_user_is_not_authenticated(self):
         self.client.force_login(self.user)
-        response = self.client.post(reverse("cyberpunk_mmo:profile-delete"))
+        response = self.client.post(reverse("user:profile-delete"))
         self.assertRedirects(
             response,
             reverse("cyberpunk_mmo:index"),
         )
-        profile_url = reverse("cyberpunk_mmo:profile")
+        profile_url = reverse("user:profile")
         response = self.client.get(profile_url)
         self.assertRedirects(
             response,
-            f"{reverse('login')}?next={profile_url}",
+            f"{reverse('user:login')}?next={profile_url}",
         )

@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "cyberpunk_mmo",
+    "user.apps.UserConfig",
 ]
 
 MIDDLEWARE = [
@@ -93,6 +94,6 @@ MAILERS = {
 
 AUTH_USER_MODEL = "cyberpunk_mmo.User"
 
-LOGIN_REDIRECT_URL = "/"
-
-LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = "user:login"
+LOGIN_REDIRECT_URL = "cyberpunk_mmo:index"
+LOGOUT_REDIRECT_URL = "cyberpunk_mmo:index"

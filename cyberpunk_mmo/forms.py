@@ -1,15 +1,7 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.core.exceptions import ValidationError
 
 from cyberpunk_mmo.models import Character
-
-
-class RegisterForm(UserCreationForm):
-    class Meta:
-        model = get_user_model()
-        fields = ("username", "email", "first_name", "last_name")
 
 
 class CharacterForm(forms.ModelForm):
@@ -34,9 +26,3 @@ class CharacterForm(forms.ModelForm):
     class Meta:
         model = Character
         fields = ("name", "path", "sex", "specialization", "faction")
-
-
-class ProfileUpdateForm(forms.ModelForm):
-    class Meta:
-        model = get_user_model()
-        fields = ("first_name", "last_name", "email")
