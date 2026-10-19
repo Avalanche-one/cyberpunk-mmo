@@ -1,11 +1,45 @@
 {% extends "base.html" %}
-{% load static %}
+
+{% block title %}
+  <title>Night City News</title>
+{% endblock %}
 
 {% block content %}
-  {% for post in post_list %}
-    <h2 class="news-title">{{ post.name }}</h2>
-    <p class="news-copy">{{ post.text }}</p>
-  {% empty %}
-    <p class="empty-state">No posts yet.</p>
-  {% endfor %}
+  <section class="news-feed">
+    <header class="news-feed__header">
+      <p class="news-feed__eyebrow">NIGHT CITY // LIVE FEED</p>
+      <h1 class="news-feed__title">Latest transmissions</h1>
+    </header>
+
+    {% for post in post_list %}
+      <article class="news-card">
+        <p class="news-card__meta">
+          <time datetime="{{ post.created_at|date:'c' }}">
+            {{ post.created_at|date:"d F Y, H:i" }}
+          </time>
+        </p>
+
+        <h2 class="news-card__title">
+          <a href="{% url 'cyberpunk_mmo:post-detail' post.pk %}">
+            {{ post.name }}
+          </a>
+        </h2>
+
+        <p class="news-card__preview">
+          {{ post.text|truncatewords:35 }}
+        </p>
+
+        <a
+            class="button button--compact"
+            href="{% url 'cyberpunk_mmo:post-detail' post.pk %}"
+        >
+          Read transmission
+        </a>
+      </article>
+    {% empty %}
+      <p class="empty-state">
+        No transmissions detected.
+      </p>
+    {% endfor %}
+  </section>
 {% endblock %}

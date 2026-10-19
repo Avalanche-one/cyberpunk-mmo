@@ -51,6 +51,10 @@ class PostListView(generic.ListView):
     paginate_by = 5
 
 
+class PostDetailView(generic.DetailView):
+    model = Post
+
+
 class CharacterListView(LoginRequiredMixin, generic.ListView):
     model = Character
     paginate_by = 5

@@ -11,6 +11,7 @@ from cyberpunk_mmo.views import (
     CharacterCreateView,
     CharacterUpdateView,
     CharacterDeleteView,
+    PostDetailView,
 )
 
 urlpatterns = [
@@ -36,6 +37,11 @@ urlpatterns = [
         name="character-delete",
     ),
     path("news/", PostListView.as_view(), name="post-list"),
+    path(
+        "news/<int:pk>/",
+        PostDetailView.as_view(),
+        name="post-detail",
+    ),
 ]
 
 app_name = "cyberpunk_mmo"

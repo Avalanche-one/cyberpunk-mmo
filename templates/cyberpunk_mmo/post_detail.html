@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>{{ post.name }} | Night City News</title>
+{% endblock %}
+
+{% block content %}
+  <article class="post-detail">
+    <header class="post-detail__header">
+      <p class="post-detail__eyebrow">NIGHT CITY // NEWS TRANSMISSION</p>
+
+      <h1 class="post-detail__title">{{ post.name }}</h1>
+
+      <p class="post-detail__meta">
+        Published:
+        <time datetime="{{ post.created_at|date:'c' }}">
+          {{ post.created_at|date:"d F Y, H:i" }}
+        </time>
+      </p>
+    </header>
+
+    {% if post.image %}
+      <div class="post-detail__media">
+        <img
+            class="post-detail__image"
+            src="{{ post.image.url }}"
+            alt="{{ post.name }}"
+        >
+      </div>
+    {% endif %}
+
+    <div class="post-detail__body">
+      {{ post.text|linebreaks }}
+    </div>
+
+    <footer class="post-detail__footer">
+      <a
+          class="button button--outline"
+          href="{% url 'cyberpunk_mmo:post-list' %}"
+      >
+        Back to news
+      </a>
+    </footer>
+  </article>
+{% endblock %}
+
+{% block pagination %}{% endblock %}
