@@ -168,6 +168,191 @@ body > img {
   margin: 0;
 }
 
+.user-menu {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.user-menu__trigger {
+  position: relative;
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0.55rem;
+  min-width: 170px;
+  max-width: 230px;
+  min-height: 48px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(0, 240, 255, 0.55);
+  border-left: 3px solid var(--color-accent);
+  color: var(--color-white);
+  background:
+    linear-gradient(110deg, rgba(0, 240, 255, 0.12), transparent 52%),
+    var(--color-panel);
+  box-shadow:
+    inset 0 0 18px rgba(0, 240, 255, 0.06),
+    0 0 16px rgba(0, 240, 255, 0.08);
+  text-align: left;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.user-menu__trigger::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  left: 10px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-cyan), transparent);
+  transform: scaleX(0.35);
+  transform-origin: left;
+  transition: transform 160ms ease;
+}
+
+.user-menu:hover .user-menu__trigger,
+.user-menu:focus-within .user-menu__trigger {
+  border-color: var(--color-cyan);
+  background:
+    linear-gradient(110deg, rgba(0, 240, 255, 0.18), transparent 60%),
+    var(--color-panel-soft);
+  box-shadow:
+    inset 0 0 22px rgba(0, 240, 255, 0.08),
+    var(--shadow-cyan);
+  outline: none;
+}
+
+.user-menu:hover .user-menu__trigger::after,
+.user-menu:focus-within .user-menu__trigger::after {
+  transform: scaleX(1);
+}
+
+.user-menu__status {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  box-shadow: 0 0 10px var(--color-cyan);
+}
+
+.user-menu__label {
+  grid-column: 2;
+  color: var(--color-muted);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  line-height: 1;
+}
+
+.user-menu__identity {
+  grid-column: 2;
+  overflow: hidden;
+  color: var(--color-accent);
+  font-size: 0.84rem;
+  font-weight: 900;
+  letter-spacing: 0.065em;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.user-menu__chevron {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  color: var(--color-accent);
+  transition: transform 160ms ease;
+}
+
+.user-menu__dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 30;
+  width: 100%;
+  min-width: 190px;
+  padding-top: 0.45rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-0.35rem);
+  transition: opacity 150ms ease, transform 150ms ease, visibility 150ms ease;
+}
+
+.user-menu__dropdown::before {
+  content: "";
+  position: absolute;
+  inset: 0.45rem 0 0;
+  z-index: -1;
+  border: 1px solid rgba(0, 240, 255, 0.45);
+  border-left: 3px solid var(--color-accent);
+  border-top: 3px solid var(--color-accent);
+  background:
+    linear-gradient(135deg, rgba(0, 240, 255, 0.08), transparent 55%),
+    rgba(5, 8, 13, 0.98);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55), var(--shadow-cyan);
+}
+
+.user-menu:hover .user-menu__dropdown,
+.user-menu:focus-within .user-menu__dropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.user-menu:hover .user-menu__chevron,
+.user-menu:focus-within .user-menu__chevron {
+  transform: rotate(180deg);
+}
+
+.user-menu__action {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 0;
+  color: var(--color-white);
+  background: transparent;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.user-menu__action::before {
+  content: "// ";
+  color: var(--color-accent);
+}
+
+.user-menu__action:hover,
+.user-menu__action:focus-visible {
+  color: var(--color-ink);
+  background: var(--color-cyan);
+  outline: none;
+}
+
+.user-menu__action--danger {
+  color: var(--color-red);
+}
+
+.user-menu__action--danger::before {
+  color: var(--color-red);
+}
+
+.user-menu__action--danger:hover,
+.user-menu__action--danger:focus-visible {
+  color: var(--color-white);
+  background: var(--color-red);
+}
+
+.user-menu__logout {
+  margin: 0;
+  border-top: 1px solid var(--color-line);
+}
+
 .theme-switcher {
   display: flex;
   flex: 0 0 auto;
@@ -723,6 +908,11 @@ a.page-link:focus-visible,
   .site-nav__links {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .user-menu__trigger {
+    min-width: 145px;
+    max-width: min(52vw, 190px);
   }
 
   .site-nav__link {

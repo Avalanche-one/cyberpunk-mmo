@@ -29,18 +29,33 @@
     </li>
     {% if user.is_authenticated %}
       <li class="site-nav__item">
-        <a class="site-nav__link" href="{% url 'user:profile' %}">MY PROFILE</a>
-      </li>
-      <li class="site-nav__item">
         <a class="site-nav__link" href="{% url 'cyberpunk_mmo:character-list' %}">MY CREW</a>
       </li>
     {% endif %}
   </ul>
   {% if user.is_authenticated %}
-    <form class="site-nav__auth" method="post" action="{% url 'user:logout' %}">
-      {% csrf_token %}
-      <button class="button button--compact button--outline" type="submit">LOGOUT</button>
-    </form>
+    <div class="user-menu">
+      <button
+          class="user-menu__trigger"
+          type="button"
+          aria-haspopup="true"
+          aria-label="Open profile menu"
+      >
+        <span class="user-menu__status" aria-hidden="true"></span>
+        <span class="user-menu__label">USER // ONLINE</span>
+        <span class="user-menu__identity">{{ user.username }}</span>
+        <span class="user-menu__chevron" aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="user-menu__dropdown">
+        <a class="user-menu__action" href="{% url 'user:profile' %}">VIEW PROFILE</a>
+        <form class="user-menu__logout" method="post" action="{% url 'user:logout' %}">
+          {% csrf_token %}
+          <button class="user-menu__action user-menu__action--danger" type="submit">
+            LOG OUT
+          </button>
+        </form>
+      </div>
+    </div>
   {% else %}
     <a class="button button--compact button--outline" href="{% url 'user:login' %}">LOGIN</a>
     <a class="button button--compact" href="{% url 'user:register' %}">REGISTRATION</a>

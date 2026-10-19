@@ -86,3 +86,10 @@ class ProfileViewTests(TestCase):
             response,
             f"{reverse('user:login')}?next={profile_url}",
         )
+
+    def test_navbar_displays_username_for_authenticated_user(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse("cyberpunk_mmo:index"))
+        self.assertContains(response, self.user.username)
+        self.assertContains(response, reverse("user:profile"))
+        self.assertContains(response, reverse("user:logout"))
