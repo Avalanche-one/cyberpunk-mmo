@@ -43,7 +43,7 @@
       >
         <span class="user-menu__status" aria-hidden="true"></span>
         <span class="user-menu__label">USER // ONLINE</span>
-        <span class="user-menu__identity">{{ user.username }}</span>
+        <span class="user-menu__identity">{% firstof user.first_name user.email user.username %}</span>
         <span class="user-menu__chevron" aria-hidden="true">&#9662;</span>
       </button>
       <div class="user-menu__dropdown">

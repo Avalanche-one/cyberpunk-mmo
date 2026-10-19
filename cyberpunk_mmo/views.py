@@ -1,12 +1,12 @@
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from cyberpunk_mmo.forms import CharacterForm
+from cyberpunk_mmo.forms import CharacterForm, SpecializationForm
 from cyberpunk_mmo.models import Faction, Specialization, Post, Character
 
 
@@ -120,3 +120,16 @@ class CharacterDeleteView(LoginRequiredMixin, SuccessMessageMixin, generic.Delet
 
     def get_queryset(self):
         return Character.objects.filter(owner=self.request.user)
+
+class SpecializationCreateView(
+    LoginRequiredMixin,
+    PermissionRequiredMixin,
+    SuccessMessageMixin,
+    generic.CreateView,
+):
+    model = Specialization
+    form_class = SpecializationForm
+    template_name = "cyberpunk_mmo/specialization_form.html"
+    permission_required = "cyberpunk_mmo.add_specialization"
+    success_url = reverse_lazy("cyberpunk_mmo:specialization-list")
+    success_message = "Specialization was created successfully."

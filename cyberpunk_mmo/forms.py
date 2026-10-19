@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from cyberpunk_mmo.models import Character
+from cyberpunk_mmo.models import Character, Specialization
 
 
 class CharacterForm(forms.ModelForm):
@@ -26,3 +26,9 @@ class CharacterForm(forms.ModelForm):
     class Meta:
         model = Character
         fields = ("name", "path", "sex", "specialization", "faction")
+
+
+class SpecializationForm(forms.ModelForm):
+    class Meta:
+        model = Specialization
+        fields = ("name", "description")

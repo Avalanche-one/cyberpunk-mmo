@@ -87,9 +87,18 @@ class ProfileViewTests(TestCase):
             f"{reverse('user:login')}?next={profile_url}",
         )
 
-    def test_navbar_displays_username_for_authenticated_user(self):
+    def test_navbar_displays_first_name_for_authenticated_user(self):
         self.client.force_login(self.user)
         response = self.client.get(reverse("cyberpunk_mmo:index"))
-        self.assertContains(response, self.user.username)
+        self.assertContains(response, self.user.first_name)
         self.assertContains(response, reverse("user:profile"))
         self.assertContains(response, reverse("user:logout"))
+
+    def test_navbar_uses_email_when_first_name_is_empty(self):
+        self.user.first_name = ""
+        self.user.save(update_fields=["first_name"])
+        self.client.force_login(self.user)
+
+        response = self.client.get(reverse("cyberpunk_mmo:index"))
+
+        self.assertContains(response, self.user.email)

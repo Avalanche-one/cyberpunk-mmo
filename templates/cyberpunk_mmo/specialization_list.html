@@ -3,10 +3,24 @@
 
 {% block content %}
   {% for specialization in specialization_list %}
-    <img class="catalog-image specialization-image" src="{% static specialization.image_path %}" alt="{{ specialization.name }}">
+    <img
+        class="catalog-image specialization-image"
+        src="{% static specialization.image_path %}"
+        data-fallback-src="{% static 'images/specializations/default.png' %}"
+        onerror="this.onerror=null; this.src=this.dataset.fallbackSrc;"
+        alt="{{ specialization.name }}"
+    >
     <h2 class="catalog-title">{{ specialization.name }}</h2>
     <p class="catalog-copy">{{ specialization.description }}</p>
   {% empty %}
     <p class="empty-state">No specializations found, choom!</p>
   {% endfor %}
+  {% if perms.cyberpunk_mmo.add_specialization %}
+    <a
+        class="button"
+        href="{% url 'cyberpunk_mmo:specialization-create' %}"
+    >
+      Create specialization
+    </a>
+  {% endif %}
 {% endblock %}

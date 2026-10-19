@@ -11,7 +11,7 @@ from cyberpunk_mmo.views import (
     CharacterCreateView,
     CharacterUpdateView,
     CharacterDeleteView,
-    PostDetailView,
+    PostDetailView, SpecializationCreateView,
 )
 
 urlpatterns = [
@@ -41,6 +41,11 @@ urlpatterns = [
         "news/<int:pk>/",
         PostDetailView.as_view(),
         name="post-detail",
+    ),
+    path(
+        "specializations/create/",
+        SpecializationCreateView.as_view(),
+        name="specialization-create",
     ),
 ]
 
